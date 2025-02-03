@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hostel Complaint System</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        body {
+            background-color: #f8f9fa;
+            scroll-behavior: smooth;
+            font-family: Arial, sans-serif;
+        }
+        
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+        }
+
+        .banner {
+            background: url("{{ url_for('static', filename='img/veritas.jpg') }}") no-repeat center center/cover;
+            height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
+            font-size: 2rem;
+            font-weight: bold;
+            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.7);
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+        .overlay{
+            height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
+            font-size: 2rem;
+            font-weight: bold;
+            background-color: rgba(0, 0, 0, 0.506);
+            width: 100%;
+        }
+        .section {
+            padding: 80px 20px;
+        }
+
+        #offices {
+            margin: auto;
+            width: 80%;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .admin-card {
+            text-align: center;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease-in-out;
+        }
+        .admin-card:hover {
+            transform: scale(1.05);
+        }
+        .admin-card img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid #007bff;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #343a40;
+            color: white;
+            margin-top: 50px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#home">Hostel Complaint System</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#about">About Us</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#offices">Offices</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- Banner Section -->
+    <div class="banner">
+        <div class="overlay">Welcome to VUNA Hostel Complaint System</div>
+    </div>
+
+    <!-- Home Section -->
+    <div id="home" class="section text-center">
+        <h2>Effortless Complaint Resolution</h2>
+        <p>Your one-stop solution for lodging complaints and getting assistance quickly.</p>
+    </div>
+
+    <!-- About Section -->
+    <div id="about" class="section bg-light text-center">
+        <h2>About Us</h2>
+        <p>We are dedicated to providing a seamless complaint resolution system for hostel residents.</p>
+    </div>
+
+    <!-- Offices Section -->
+    <div class="section text-center">
+        <h2>Our Offices</h2>
+        <p>Meet our hostel admins and reach out to them directly.</p>
+    </div>
+
+    <div id="offices">
+        <!-- Office Cards Will Be Loaded Dynamically Here -->
+    </div>
+    
+    <!-- Footer -->
+    <footer class="footer">
+        &copy; 2025 Hostel Complaint System. All Rights Reserved.
+    </footer>
+    
+    <!-- Scripts -->
+    <script src="{{ url_for('static', filename='scripts/js.js') }}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hostel Complaint System</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        body {
+            background-color: #f8f9fa;
+            scroll-behavior: smooth;
+        }
+        .container {
+            margin-top: 50px;
+        }
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+        }
+        .section {
+            padding: 100px 20px;
+        }
+        .admin-photos {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        .admin-card {
+            text-align: center;
+            width: 250px;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .admin-card img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+        .footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #343a40;
+            color: white;
+        }
+        #offices{
+            margin: auto;
+            width: 70%;
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            justify-content:center;
+            align-items: center ;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#home">Hostel Complaint System</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#about">About Us</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#offices">Offices</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    
+    <div id="home" class="section text-center">
+        <h2>Welcome to the Hostel Complaint System</h2>
+        <p>Your one-stop solution for lodging complaints and getting assistance.</p>
+    </div>
+    
+    <div id="about" class="section bg-light text-center">
+        <h2>About Us</h2>
+        <p>We are dedicated to providing a seamless complaint resolution system for hostel residents.</p>
+    </div>
+
+    <div class="section text-center">
+        <h2>Our Offices</h2>
+        <p>Meet our hostel admins and reach out to them directly.</p>
+    </div>
+    <div id="offices">
+        
+    </div>
+    
+    <footer class="footer">
+        &copy; 2025 Hostel Complaint System. All Rights Reserved.
+    </footer>
+    
+    <script src="{{url_for('static', filename='scripts/js.js')}}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html> -->
