@@ -1,12 +1,20 @@
 document.addEventListener("DOMContentLoaded", () => {
     try {
-        const officeData = sessionStorage.getItem("selectedOffice"); // Correct key
-        const office = officeData ? JSON.parse(officeData) : null;
+        const matricNumber = localStorage.getItem("Logged_in_user");  // Fetch the matric number from localStorage
+        console.log("Matric Number from LocalStorage:", matricNumber); // Debugging line
+
+        if (matricNumber) {
+            document.getElementById("matric").value = matricNumber;  // Auto-fill the matric number
+        } else {
+            alert("Matric number not found! Please log in again.");
+            window.location.href = "/login";  // Redirect to login page if not found
+        }
     } catch (error) {
-        alert("An error occurred while loading office.");
-        window.location.href = "/";
+        alert("An error occurred while loading matric number.");
+        window.location.href = "/";  // Redirect to home page
     }
 });
+
 
 
 const complaintForm = document.getElementById("complaintForm");
@@ -15,24 +23,25 @@ if (complaintForm) {
     complaintForm.addEventListener("submit", (event) => {  // Use "submit" instead of "click"
         event.preventDefault();
 
-        const name = document.getElementById("name").value.trim();
         const room = document.getElementById("room").value.trim();
         const compliantType = document.getElementById("type").value.trim();
         const description = document.getElementById("description").value.trim();
+        const matric = document.getElementById("matric").value.trim();  // Get the matric number
 
-        if (!name || !room || !compliantType || !description) {
+        if (!room || !compliantType || !description || !matric) {
             alert("Please fill all fields before sending!");
             return;
-        } 
+        }
+
         try {
             let complaints = localStorage.getItem("complaints");
-            complaints = complaints ? JSON.parse(complaints) : [];  // Corrected line
+            complaints = complaints ? JSON.parse(complaints) : [];
 
             const officeData = sessionStorage.getItem("selectedOffice");
             const office = officeData ? JSON.parse(officeData) : {};
 
             const newComplaint = {
-                name: name,
+                matric: matric,  // Store matric number in the complaint
                 room: room,
                 compliantType: compliantType,
                 description: description,

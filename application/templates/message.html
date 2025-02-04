@@ -20,12 +20,18 @@
         <div class="card p-4">
             <form id="complaintForm">
                 <div class="mb-3">
-                    <label class="form-label">Name</label>
-                    <input type="text" id="name" class="form-control" required>
-                </div>
-                <div class="mb-3">
                     <label class="form-label">Matric</label>
                     <input type="text" id="matric" class="form-control" required>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Hostel</label>
+                    <select id="hostel" class="form-control" required>
+                        <option>Pa Etos</option>
+                        <option>CICL</option>
+                        <option>Old Kelson</option>
+                        <option>New Kelson</option>
+                        <option>Stanzel</option>
+                    </select>
                 </div>
                 <div class="mb-3">
                     <label class="form-label">Room No</label>
@@ -44,7 +50,7 @@
                     <label class="form-label">Description</label>
                     <textarea id="description" class="form-control" rows="3" required></textarea>
                 </div>
-                <a href="{{ url_for('send_message') }}" class="btn btn-primary">Submit Compliant</a>
+                <a href="{{ url_for('message_view') }}" class="btn btn-primary">Submit Compliant</a>
             </form>
         </div>
     </div>
